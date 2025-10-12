@@ -1,1354 +1,1184 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chandima Wijerathna - Full Stack Software Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="wpOceans">
+    <!-- Page Title -->
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <!-- Icon fonts -->
+    <title>Chandima Wijerathna - Software Engineer Portfolio</title>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/flaticon.css" rel="stylesheet">
+    <!-- Bootstrap Icons as primary -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Font Awesome as backup -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom icon styling -->
     <style>
-        :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --primary-light: #93c5fd;
-            --secondary: #06b6d4;
-            --accent: #f59e0b;
-            --text-dark: #0f172a;
-            --text-medium: #475569;
-            --text-light: #64748b;
-            --bg-white: #ffffff;
-            --bg-light: #f8fafc;
-            --bg-gray: #f1f5f9;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-medium);
-            background-color: var(--bg-white);
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--text-dark);
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-        }
-
-        h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-        }
-
-        h3 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-weight: 600;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.125rem;
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.875rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            outline: none;
-            text-decoration: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            box-shadow: var(--shadow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title .badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-
-        .section-title h2 {
-            margin-bottom: 1rem;
-        }
-
-        .section-title .subtitle {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--bg-white);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid var(--border);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .header-scrolled {
-            box-shadow: var(--shadow);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            color: var(--text-medium);
-            text-decoration: none;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary);
-            margin: 3px 0;
-            transition: var(--transition);
-        }
-
-        /* Hero Section */
-        #hero {
-            padding: 180px 0 100px;
-            background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        #hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .hero-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            flex: 1;
-            max-width: 600px;
-        }
-
-        .hero-greeting {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            border: 1px solid var(--border);
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .hero-greeting .wave {
-            font-size: 1.5rem;
-            animation: wave 2s ease-in-out infinite;
-        }
-
-        @keyframes wave {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(20deg); }
-            75% { transform: rotate(-10deg); }
-        }
-
-        .hero-name {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-role {
-            font-size: clamp(1.25rem, 2.5vw, 2rem);
-            font-weight: 600;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            color: var(--text-medium);
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .hero-stat {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-        }
-
-        .hero-stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            font-weight: 600;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: white;
-            color: var(--primary);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .hero-image {
-            flex: 0 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            width: 350px;
-            height: 350px;
-        }
-
-        .hero-image-bg {
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 1;
-        }
-
-        .floating-badges {
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .floating-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: white;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            box-shadow: var(--shadow);
-            font-weight: 600;
-            font-size: 0.9rem;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .floating-badge:nth-child(2) {
-            animation-delay: 1s;
-        }
-
-        .floating-badge:nth-child(3) {
-            animation-delay: 2s;
-        }
-
-        /* About Section */
-        #about {
-            background: var(--bg-light);
-        }
-
-        .about-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .about-content {
-            text-align: center;
-        }
-
-        .about-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .highlight-card {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .highlight-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 1.5rem;
-        }
-
-        .stat h3 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Skills Section */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category h3 {
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .skill-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .skill-item {
-            background: var(--bg-light);
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .skill-item:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Projects Section */
-        #projects {
-            background: var(--bg-light);
-        }
-
-        .project-filters {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.75rem 1.5rem;
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            background: white;
-            color: var(--text-medium);
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-
-        .filter-btn:hover, .filter-btn.active {
-            border-color: var(--primary);
-            background: var(--primary);
-            color: white;
-        }
-
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            overflow: hidden;
-        }
-
-        .project-image {
-            height: 200px;
-            overflow: hidden;
-            border-radius: 12px 12px 0 0;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            background: var(--bg-light);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-links .btn {
-            flex: 1;
-            justify-content: center;
-        }
-
-        /* Contact Section */
-        #contact {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contact-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: white;
-            color: var(--primary);
-            box-shadow: var(--shadow);
-            font-size: 1.2rem;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .form-group label {
-            font-weight: 500;
-        }
-
-        .form-control {
-            padding: 12px 15px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 3rem 0 1.5rem;
-        }
-
-        .footer-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--primary-light);
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #374151;
-            width: 100%;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-container {
-                flex-direction: column;
-                text-align: center;
+        /* Fix flaticon font loading */
+        @font-face {
+            font-family: "flaticon";
+            src: url("assets/fonts/flaticon.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        /* Floating icons removed for clean look */
+        
+        /* Social icons styling */
+        .social-icons i {
+            font-size: 18px !important;
+            width: auto !important;
+            height: auto !important;
+        }
+        
+        /* Tech stack icons removed for clean design */
+        
+        /* Service icons styling */
+        .wpo-service-item .icon i {
+            font-size: 48px !important;
+            color: #59C378 !important;
+        }
+        
+        /* Portfolio section icon */
+        .sec-title-icon i {
+            font-size: 100px !important;
+            color: rgba(89, 195, 120, 0.1) !important;
+        }
+        
+        /* Project counter icon */
+        .project .icon i {
+            font-size: 24px !important;
+            color: #59C378 !important;
+        }
+        
+        /* Hero image size control */
+        .static-hero-right {
+            max-width: 550px !important;
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+        
+        .static-hero-img {
+            max-width: 500px !important;
+            max-height: 500px !important;
+            margin: 0 auto !important;
+        }
+        
+        .static-hero-img-inner {
+            position: relative !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+        
+        .static-hero-img-inner img {
+            max-width: 450px !important;
+            max-height: 450px !important;
+            width: 450px !important;
+            height: 450px !important;
+            object-fit: cover !important;
+            border-radius: 50% !important;
+            border: 5px solid rgba(89, 195, 120, 0.4) !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        /* Clean image design without floating items */
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 1200px) {
+            .static-hero-img-inner img {
+                max-width: 400px !important;
+                max-height: 400px !important;
+                width: 400px !important;
+                height: 400px !important;
             }
-
-            .hero-btns {
-                justify-content: center;
-            }
-
-            .floating-badges {
-                position: static;
-                transform: none;
-                flex-direction: row;
-                justify-content: center;
-                margin-top: 2rem;
+            
+            .static-hero-right {
+                max-width: 480px !important;
             }
         }
-
+        
+        @media (max-width: 991px) {
+            .static-hero-right {
+                max-width: 420px !important;
+                margin: 40px auto 0 auto !important;
+            }
+            
+            .static-hero-img-inner img {
+                max-width: 380px !important;
+                max-height: 380px !important;
+                width: 380px !important;
+                height: 380px !important;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .static-hero-img-inner img {
+                max-width: 320px !important;
+                max-height: 320px !important;
+                width: 320px !important;
+                height: 320px !important;
             }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hero-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .project-filters {
-                gap: 0.5rem;
-            }
-
-            .filter-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.875rem;
-            }
-
-            .projects-container {
-                grid-template-columns: 1fr;
+            
+            .static-hero-right {
+                max-width: 360px !important;
+                margin: 30px auto !important;
             }
         }
-
-        @media (max-width: 576px) {
-            section {
-                padding: 70px 0;
+        
+        @media (max-width: 480px) {
+            .static-hero-img-inner img {
+                max-width: 280px !important;
+                max-height: 280px !important;
+                width: 280px !important;
+                height: 280px !important;
             }
-
-            .hero-btns {
-                flex-direction: column;
+            
+            .static-hero-right {
+                max-width: 320px !important;
             }
-
-            .hero-image-wrapper {
-                width: 280px;
-                height: 280px;
-            }
-
-            .floating-badge {
-                font-size: 0.8rem;
-                padding: 0.75rem 1.25rem;
-            }
+            
+            /* Clean mobile design */
+        }
+        
+        /* Fallback for missing icons */
+        .icon-fallback {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            font-size: 20px;
         }
     </style>
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Plugins for this template -->
+    <link href="assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/owl.theme.css" rel="stylesheet">
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <link href="assets/css/slick-theme.css" rel="stylesheet">
+    <link href="assets/css/swiper.min.css" rel="stylesheet">
+    <link href="assets/css/nice-select.css" rel="stylesheet">
+    <link href="assets/css/owl.transitions.css" rel="stylesheet">
+    <link href="assets/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/css/odometer-theme-default.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="assets/sass/style.css" rel="stylesheet">
 </head>
+
 <body>
-    <!-- Header & Navigation -->
-    <header id="header">
-        <div class="container">
-            <nav class="nav-container">
-                <a href="#hero" class="logo">Chandima</a>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#achievements">Achievements</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="container">
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+        <!-- start preloader -->
+        <div class="preloader">
+            <div class="vertical-centered-box">
+                <div class="content">
+                    <div class="loader-circle"></div>
+                    <div class="loader-line-mask">
+                        <div class="loader-line"></div>
+                    </div>
+                    <img src="assets/images/preloader.png" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- end preloader -->
+        <!-- Start header -->
+        <header id="header" class="wpo-header-style-1">
+            <div class="wpo-site-header">
+                <nav class="navigation navbar navbar-expand-lg navbar-light">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3 col-md-3 col-3 d-lg-none dl-block">
+                                <div class="mobail-menu">
+                                    <button type="button" class="navbar-toggler open-btn">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar first-angle"></span>
+                                <span class="icon-bar middle-angle"></span>
+                                <span class="icon-bar last-angle"></span>
+                            </button>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-6 col-6">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand site-logo" href="index.html"><img
+                                    src="assets/images/logo.png" alt="">Chandima.</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-1 col-1">
+                                <div id="navbar" class="collapse navbar-collapse navigation-holder">
+                                    <button class="menu-close"><i class="ti-close"></i></button>
+                                    <ul class="nav navbar-nav mb-2 mb-lg-0">
+                                        <li>
+                                            <a href="#div">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="#about">About</a>
+                                        </li>
+                                        <li>
+                                            <a href="#services">Services</a>
+                                        </li>
+                                        <li>
+                                            <a href="#portfolio">Portfolio</a>
+                                        </li>
+                                        <li>
+                                            <a href="#experience">Experience</a>
+                                        </li>
+                                        <li>
+                                            <a href="mailto:chandima0406sajith@gmail.com">Contact</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <!-- end of nav-collapse -->
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-2">
+                                <div class="header-right">
+                                    <div class="header-btn">
+                                        <a class="theme-btn" download="Chandima_Wijerathna_CV" href="assets/images/chandima_cv.pdf" title="Chandima Wijerathna CV">
+                                    <img class="hide-img" alt="Chandima CV" src="assets/images/chandima_cv.pdf">
+                                    Resume
+                                </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of container -->
+                </nav>
+            </div>
+        </header>
+        <!-- end of header -->
+        <!-- start of hero -->
+        <section class="static-hero" id='div'>
             <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-greeting">
-                        <span class="wave">👋</span>
-                        <span>Hello, I'm</span>
-                    </div>
-                    <h1 class="hero-name">Chandima Wijerathna</h1>
-                    <h2 class="hero-role">Full Stack Software Engineer</h2>
-                    <p class="hero-description">
-                        Results-driven Software Engineer with expertise in MERN stack development and AI-powered web solutions. 
-                        Passionate about creating scalable applications and delivering exceptional user experiences.
-                    </p>
-                    
-                    <div class="hero-stats">
-                        <div class="hero-stat">
-                            <div class="hero-stat-number">6+</div>
-                            <div class="hero-stat-label">Projects Completed</div>
-                        </div>
-                        <div class="hero-stat">
-                            <div class="hero-stat-number">2</div>
-                            <div class="hero-stat-label">Awards Won</div>
-                        </div>
-                        <div class="hero-stat">
-                            <div class="hero-stat-number">1+</div>
-                            <div class="hero-stat-label">Years Experience</div>
-                        </div>
-                    </div>
-                    
-                    <div class="hero-btns">
-                        <a href="./assets/resume-example.pdf" class="btn btn-primary" download>
-                            <i class="fas fa-download"></i>
-                            Download CV
-                        </a>
-                        <a href="#contact" class="btn btn-outline">
-                            <i class="fas fa-paper-plane"></i>
-                            Let's Talk
-                        </a>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/chandima-wijerathna" target="_blank" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/Chandima0406" target="_blank" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="mailto:chandima0406sajith@gmail.com" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+94772174920" title="Phone">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="hero-image">
-                    <div class="hero-image-wrapper">
-                        <div class="hero-image-bg"></div>
-                        <img src="./assets/profile-pic.jpg" alt="Chandima Wijerathna - Software Engineer">
-                    </div>
-                    
-                    <div class="floating-badges">
-                        <div class="floating-badge">
-                            <i class="fas fa-check-circle" style="color: #10b981;"></i>
-                            <span>Available for Work</span>
-                        </div>
-                        <div class="floating-badge">
-                            <i class="fas fa-trophy" style="color: #f59e0b;"></i>
-                            <span>Award Winner</span>
-                        </div>
-                        <div class="floating-badge">
-                            <i class="fas fa-code" style="color: #3b82f6;"></i>
-                            <span>Full Stack Dev</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <span class="badge">Get To Know More</span>
-                <h2>About Me</h2>
-                <p class="subtitle">Passionate developer with a drive for innovation and excellence</p>
-            </div>
-            <div class="about-container">
-                <div class="about-content">
-                    <p>
-                        I am a passionate Software Engineer and undergraduate student with expertise in full-stack MERN development 
-                        (MongoDB, Express.js, React, Node.js) and AI-powered web solutions. I have a proven track record in building 
-                        scalable applications, optimizing workflows, and delivering intuitive user experiences.
-                    </p>
-                    <p>
-                        As a UI/UX design competition winner and hackathon finalist, I bring strong problem-solving, leadership, 
-                        and team collaboration skills to every project. I'm constantly learning and adapting to new technologies 
-                        to create innovative solutions.
-                    </p>
-                    
-                    <div class="about-highlights">
-                        <div class="card highlight-card">
-                            <div class="highlight-icon">
-                                <i class="fas fa-code"></i>
+                <div class="hero-inner">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-xl-6 col-lg-6 col-12">
+                                <div class="wpo-static-hero-inner">
+                                    <div data-swiper-parallax="300" class="slide-title">
+                                        <h2><span>Hello,</span> I am Chandima Wijerathna.</h2>
+                                    </div>
+                                    <div data-swiper-parallax="300" class="slide-sub-title">
+                                        <h5>Software Engineer</h5>
+                                    </div>
+                                    <div data-swiper-parallax="400" class="slide-text">
+                                        <p>Results-driven Software Engineer with hands-on experience in full-stack MERN development and AI-powered web solutions. Based in Colombo, Sri Lanka.</p>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="slide-btn"><a class="theme-btn" href="mailto:chandima0406sajith@gmail.com">Hire Me</a></div>
+                                </div>
                             </div>
-                            <h3>Full-Stack Development</h3>
-                            <p>Specializing in MERN stack with expertise in both frontend and backend technologies.</p>
                         </div>
-                        <div class="card highlight-card">
-                            <div class="highlight-icon">
-                                <i class="fas fa-brain"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="static-hero-right">
+                <div class="static-hero-img">
+                    <div class="static-hero-img-inner">
+                        <img src="assets/images/slider/1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="shape-1">
+                <svg width="1038" height="938" viewBox="0 0 1038 938" fill="none">
+                    <g opacity="0.5" filter="url(#filter0_f_39_4392)">
+                        <circle cx="290.5" cy="282.5" r="247.5" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_f_39_4392" x="-457" y="-465" width="1495" height="1495"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_39_4392" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+            <div class="shape-2">
+                <svg width="1295" height="938" viewBox="0 0 1295 938" fill="none">
+                    <g opacity="0.4" filter="url(#filter0_f_39_4393)">
+                        <circle cx="647.5" cy="561.5" r="247.5" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_f_39_4393" x="0" y="-86" width="1295" height="1295"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feGaussianBlur stdDeviation="200" result="effect1_foregroundBlur_39_4393" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+            <div class="shape-3">
+                <svg width="752" height="747" viewBox="0 0 752 747" fill="none">
+                    <g opacity="0.45" filter="url(#filter0_f_39_4394)">
+                        <circle cx="647.5" cy="99.5" r="247.5" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_f_39_4394" x="0" y="-548" width="1295" height="1295"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feGaussianBlur stdDeviation="200" result="effect1_foregroundBlur_39_4394" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+            <div class="line-shape-1">
+                <img src="assets/images/slider/line-1.png" alt="">
+            </div>
+            <div class="line-shape-2">
+                <img src="assets/images/slider/line-2.png" alt="">
+            </div>
+        </section>
+        <!-- end of hero slider -->
+
+        <!-- start of wpo-about-area -->
+        <div id="about" class="wpo-about-area section-padding">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-12 col-sm-12">
+                        <div class="wpo-about-exprience-wrap">
+                            <div class="wpo-about-exprience">
+                                <h2>02</h2>
+                                <span>Years of Experience</span>
                             </div>
-                            <h3>AI Integration</h3>
-                            <p>Experience in building AI-powered applications using modern APIs and frameworks.</p>
-                        </div>
-                        <div class="card highlight-card">
-                            <div class="highlight-icon">
-                                <i class="fas fa-palette"></i>
+                            <div class="client">
+                                <h3><span class="odometer" data-count="200">00</span>+</h3>
+                                <p>Students Served</p>
                             </div>
-                            <h3>UI/UX Design</h3>
-                            <p>Award-winning design skills with focus on creating intuitive user experiences.</p>
                         </div>
                     </div>
-                    
-                    <div class="about-stats">
-                        <div class="card stat">
-                            <h3>6+</h3>
-                            <p>Projects Completed</p>
-                        </div>
-                        <div class="card stat">
-                            <h3>2</h3>
-                            <p>Hackathon Awards</p>
-                        </div>
-                        <div class="card stat">
-                            <h3>1+</h3>
-                            <p>Years of Experience</p>
-                        </div>
-                        <div class="card stat">
-                            <h3>3</h3>
-                            <p>Technical Certifications</p>
+                    <div class="col-lg-6 offset-lg-1 col-md-12 col-sm-12">
+                        <div class="wpo-about-content">
+                            <div class="wpo-about-title">
+                                <h2>Technical Expertise</h2>
+                                <p>Proven track record in building scalable applications, optimizing workflows, and delivering intuitive user experiences. UI/UX design competition winner and hackathon finalist with strong problem-solving and leadership skills.</p>
+                            </div>
+                            <div class="wpo-about-funfact">
+                                <div class="grid">
+                                    <div class="grid-inner">
+                                        <h3><span class="odometer" data-count="95">00</span>%</h3>
+                                        <p>JavaScript</p>
+                                    </div>
+                                </div>
+                                <div class="grid">
+                                    <div class="grid-inner">
+                                        <h3><span class="odometer" data-count="90">00</span>%</h3>
+                                        <p>React.js</p>
+                                    </div>
+                                </div>
+                                <div class="grid">
+                                    <div class="grid-inner">
+                                        <h3><span class="odometer" data-count="88">00</span>%</h3>
+                                        <p>Node.js</p>
+                                    </div>
+                                </div>
+                                <div class="grid">
+                                    <div class="grid-inner">
+                                        <h3><span class="odometer" data-count="85">00</span>%</h3>
+                                        <p>Python</p>
+                                    </div>
+                                </div>
+                                <div class="grid">
+                                    <div class="grid-inner">
+                                        <h3><span class="odometer" data-count="80">00</span>%</h3>
+                                        <p>MongoDB</p>
+                                    </div>
+                                </div>
+                                <div class="grid">
+                                    <div class="grid-inner">
+                                        <h3><span class="odometer" data-count="75">00</span>%</h3>
+                                        <p>Java</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="ab-shape">
+                <svg width="995" height="1495" viewBox="0 0 995 1495" fill="none">
+                    <g opacity="0.3" filter="url(#filter0_f_39_4267)">
+                        <circle cx="247.5" cy="747.5" r="247.5" fill="#FFE500" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_f_39_4267" x="-500" y="0" width="1495" height="1495"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_39_4267" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+            <div class="ab-shape-s2">
+                <svg width="1252" height="1901" viewBox="0 0 1252 1901" fill="none">
+                    <g opacity="0.15" filter="url(#filter0_f_39_4265)">
+                        <circle cx="950" cy="950.004" r="450" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_f_39_4265" x="-0.00012207" y="0.00402832" width="1900" height="1900"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_39_4265" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+            <div class="line-shape-1">
+                <img src="assets/images/about/shape1.png" alt="">
+            </div>
+            <div class="line-shape-2">
+                <img src="assets/images/about/shape2.png" alt="">
             </div>
         </div>
-    </section>
+        <!-- end of wpo-about-area -->
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <div class="section-title">
-                <span class="badge">Explore My</span>
-                <h2>Technical Skills</h2>
-                <p class="subtitle">Technologies and tools I work with to bring ideas to life</p>
+        <!-- start of wpo-service-area -->
+        <div id="services" class="wpo-service-area section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-12">
+                        <div class="wpo-section-title">
+                            <h2>Development Services</h2>
+                            <p>Specialized in full-stack development with proven expertise in building scalable applications and AI-powered solutions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wpo-service-wrap">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="Development-tab" data-bs-toggle="tab" href="#Development" role="tab" aria-controls="Development" aria-selected="true">Full-Stack Development</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="Design-tab" data-bs-toggle="tab" href="#Design" role="tab" aria-controls="Design" aria-selected="false">AI Solutions</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="Marketing-tab" data-bs-toggle="tab" href="#Marketing" role="tab" aria-controls="Marketing" aria-selected="false">Database & APIs</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="Development">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="wpo-service-item">
+                                        <div class="icon">
+                                            <i class="bi bi-code-slash"></i>
+                                        </div>
+                                        <h2>MERN Stack Development</h2>
+                                        <p>Full-stack web applications using MongoDB, Express.js, React, and Node.js with modern development practices.</p>
+                                        <a href="#portfolio">View Projects</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="wpo-service-item">
+                                        <div class="icon">
+                                            <i class="bi bi-laptop"></i>
+                                        </div>
+                                        <h2>Responsive Web Design</h2>
+                                        <p>Creating scalable and responsive web applications with modern UI/UX design principles and Bootstrap framework.</p>
+                                        <a href="#portfolio">View Projects</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="wpo-service-item">
+                                        <div class="icon">
+                                            <i class="bi bi-cart4"></i>
+                                        </div>
+                                        <h2>E-Commerce Solutions</h2>
+                                        <p>Building complete e-commerce platforms with payment gateway integration and user authentication systems.</p>
+                                        <a href="#portfolio">View Projects</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="Design">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="wpo-service-item">
+                                        <div class="icon">
+                                            <i class="bi bi-robot"></i>
+                                        </div>
+                                        <h2>AI Research Assistant</h2>
+                                        <p>Building AI-powered research management systems using Gemini API and LangChain for automated proposal drafting.</p>
+                                        <a href="#portfolio">View Projects</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="wpo-service-item">
+                                        <div class="icon">
+                                            <i class="bi bi-cpu"></i>
+                                        </div>
+                                        <h2>Machine Learning Integration</h2>
+                                        <p>Integrating AI and ML capabilities into web applications for enhanced user experience and automation.</p>
+                                        <a href="#portfolio">View Projects</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="wpo-service-item">
+                                        <div class="icon">
+                                            <i class="bi bi-mortarboard"></i>
+                                        </div>
+                                        <h2>Educational Platforms</h2>
+                                        <p>Creating comprehensive educational platforms with automated certification and multi-role user management.</p>
+                                        <a href="#portfolio">View Projects</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="Marketing">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="wpo-service-item">
+                                        <div class="icon">
+                                            <i class="bi bi-database"></i>
+                                        </div>
+                                        <h2>Database Design</h2>
+                                        <p>Expert in MongoDB and MySQL database design, optimization, and management for scalable applications.</p>
+                                        <a href="#portfolio">View Projects</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="wpo-service-item">
+                                        <div class="icon">
+                                            <i class="bi bi-api"></i>
+                                        </div>
+                                        <h2>API Integration</h2>
+                                        <p>Building and integrating RESTful APIs with JWT authentication, payment gateways, and third-party services.</p>
+                                        <a href="#portfolio">View Projects</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="wpo-service-item">
+                                        <div class="icon">
+                                            <i class="bi bi-git"></i>
+                                        </div>
+                                        <h2>Version Control</h2>
+                                        <p>Proficient in Git, GitHub workflows, and collaborative development using Docker and modern DevOps practices.</p>
+                                        <a href="#portfolio">View Projects</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="skills-container">
-                <div class="card skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">JavaScript</span>
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">Java</span>
-                        <span class="skill-item">PHP</span>
-                        <span class="skill-item">SQL</span>
-                        <span class="skill-item">HTML5</span>
-                        <span class="skill-item">CSS3</span>
-                    </div>
-                </div>
-                <div class="card skill-category">
-                    <h3>Frameworks & Libraries</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">React.js</span>
-                        <span class="skill-item">Node.js</span>
-                        <span class="skill-item">Express.js</span>
-                        <span class="skill-item">Flask</span>
-                        <span class="skill-item">LangChain</span>
-                        <span class="skill-item">Bootstrap</span>
-                        <span class="skill-item">jQuery</span>
-                    </div>
-                </div>
-                <div class="card skill-category">
-                    <h3>Tools & Platforms</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Git</span>
-                        <span class="skill-item">GitHub</span>
-                        <span class="skill-item">Docker</span>
-                        <span class="skill-item">Postman</span>
-                        <span class="skill-item">Figma</span>
-                        <span class="skill-item">JWT Authentication</span>
-                        <span class="skill-item">RESTful APIs</span>
-                    </div>
-                </div>
-                <div class="card skill-category">
-                    <h3>Core Competencies</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Full-Stack Development</span>
-                        <span class="skill-item">MERN Stack</span>
-                        <span class="skill-item">API Integration</span>
-                        <span class="skill-item">Responsive Web Design</span>
-                        <span class="skill-item">Agile Methodologies</span>
-                        <span class="skill-item">UI/UX Design</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <div class="section-title">
-                <span class="badge">Browse My Recent</span>
-                <h2>Featured Projects</h2>
-                <p class="subtitle">A showcase of my latest work and technical achievements</p>
-            </div>
-            
-            <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="fullstack">Full Stack</button>
-                <button class="filter-btn" data-filter="frontend">Frontend</button>
-                <button class="filter-btn" data-filter="ai">AI/ML</button>
-                <button class="filter-btn" data-filter="web">Web Apps</button>
-            </div>
-            
-            <div class="projects-container">
-                <div class="card project-card" data-category="frontend web">
-                    <div class="project-image">
-                        <img src="./assets/project-1.png" alt="Weather App">
-                    </div>
-                    <div class="project-content">
-                        <h3>Weather App</h3>
-                        <p>A responsive weather application that provides real-time weather information for any city worldwide with beautiful UI and smooth animations.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">API</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Chandima0406/Whether-App" class="btn btn-outline" target="_blank">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="https://github.com/Chandima0406/Whether-App" class="btn btn-primary" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card project-card" data-category="fullstack ai">
-                    <div class="project-image">
-                        <img src="./assets/project-5.png" alt="NovaScript AI Research System">
-                    </div>
-                    <div class="project-content">
-                        <h3>NovaScript - AI Research Management</h3>
-                        <p>Intelligent research assistant built with MERN stack and Gemini API, revolutionizing academic proposal drafting with 80% automation.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Express.js</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Gemini AI</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Chandima0406" class="btn btn-outline" target="_blank">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="https://github.com/Chandima0406" class="btn btn-primary" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card project-card" data-category="fullstack web">
-                    <div class="project-image">
-                        <img src="./assets/project-6.png" alt="GlobalStock E-Commerce">
-                    </div>
-                    <div class="project-content">
-                        <h3>GlobalStock - E-Commerce Platform</h3>
-                        <p>Comprehensive e-commerce solution with advanced features including secure authentication, payment processing, and inventory management.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Express.js</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">JWT</span>
-                            <span class="tech-tag">Stripe</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Chandima0406" class="btn btn-outline" target="_blank">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                            <a href="https://github.com/Chandima0406" class="btn btn-primary" target="_blank">
-                                <i class="fas fa-external-link-alt"></i> Live Demo
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="ab-shape">
+                <svg width="995" height="1495" viewBox="0 0 995 1495" fill="none">
+                    <g opacity="0.3" filter="url(#filter0_f_39_4268)">
+                        <circle cx="247.5" cy="747.5" r="247.5" fill="#FFE500" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_f_39_4268" x="-500" y="0" width="1495" height="1495"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_39_4267" />
+                        </filter>
+                    </defs>
+                </svg>
             </div>
         </div>
-    </section>
+        <!-- end of wpo-service-area -->
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-title">
-                <span class="badge">Get in Touch</span>
-                <h2>Let's Work Together</h2>
-                <p class="subtitle">Ready to bring your ideas to life? Let's start a conversation</p>
+        <!-- start of wpo-work-area -->
+        <div id="experience" class="wpo-work-area section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-12">
+                        <div class="wpo-section-title">
+                            <h2>Education & Experience</h2>
+                            <p>A progressive journey in software engineering, from academic achievements to professional banking experience</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wpo-work-wrap">
+                    <div class="wpo-work-item">
+                        <ul>
+                            <li class="date">2020 - Present</li>
+                            <li class="logo"><img src="assets/images/work/1.png" alt=""></li>
+                            <li class="position">BSc. (Hons) Computing & Information Systems <span>Sabaragamuwa University of Sri Lanka</span></li>
+                            <li class="link"><a href="https://www.sab.ac.lk/">University Website</a></li>
+                        </ul>
+                    </div>
+                    <div class="wpo-work-item">
+                        <ul>
+                            <li class="date">2023 - Present</li>
+                            <li class="logo"><img src="assets/images/work/2.png" alt=""></li>
+                            <li class="position">Bank Trainee <span>Regional Development Bank, Thalawa Branch</span>
+                            </li>
+                            <li class="link"><a href="#">Financial Institution</a></li>
+                        </ul>
+                    </div>
+                    <div class="wpo-work-item">
+                        <ul>
+                            <li class="date">2018 - 2020</li>
+                            <li class="logo"><img src="assets/images/work/3.png" alt=""></li>
+                            <li class="position">G.C.E Advanced Level - Physical Science <span>Walisinghe Harischandra College, Anuradhapura</span></li>
+                            <li class="link"><a href="#">Educational Institution</a></li>
+                        </ul>
+                    </div>
+                    <div class="wpo-work-item">
+                        <ul>
+                            <li class="date">2025 - <span>Present</span></li>
+                            <li class="logo"><img src="assets/images/work/4.png" alt=""></li>
+                            <li class="position">Software Engineer Intern <span>Active Member - Society of Computer Sciences (SOCS)</span>
+                            </li>
+                            <li class="link"><a href="https://github.com/Chandima0406">GitHub Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>chandima0406sajith@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+94 77 217 4920</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Colombo, Sri Lanka</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </div>
-                        <div>
-                            <h3>LinkedIn</h3>
-                            <p>linkedin.com/in/chandima-wijerathna</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-github"></i>
-                        </div>
-                        <div>
-                            <h3>GitHub</h3>
-                            <p>github.com/Chandima0406</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form card">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" placeholder="Enter subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" class="form-control" placeholder="Enter your message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
+            <div class="shape-wk">
+                <svg width="1500" height="1500" viewBox="0 0 1500 1500" fill="none">
+                    <g opacity="0.45" filter="url(#filter0_f_39_4214)">
+                        <circle cx="750" cy="750" r="200" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_f_39_4214" x="0" y="0" width="1500" height="1500"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feGaussianBlur stdDeviation="275" result="effect1_foregroundBlur_39_4212" />
+                        </filter>
+                    </defs>
+                </svg>
             </div>
         </div>
-    </section>
+        <!-- end of wpo-work-area -->
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="logo">Chandima</div>
-                <ul class="footer-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#achievements">Achievements</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="copyright">
-                    <p>&copy; 2025 Chandima Wijerathna. All Rights Reserved.</p>
+        <!-- start of wpo-project-area -->
+        <div id="portfolio" class="wpo-project-area section-padding">
+            <div class="container">
+                <div class="wpo-section-title-s2">
+                    <div class="row align-items-center">
+                        <div class="col-lg-4 col-12">
+                            <div class="title">
+                                <h2>Development Projects.</h2>
+                                <p>Showcase of full-stack applications, AI-powered solutions, and innovative web platforms built with modern technologies.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 offset-lg-2">
+                            <div class="sec-title-icon">
+                                <i class="bi bi-graph-up-arrow"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wpo-project-wrap wpo-project-slide owl-carousel">
+                    <div class="wpo-project-item">
+                        <div class="wpo-project-img">
+                            <img src="assets/images/project/img-1.jpg" alt="">
+                        </div>
+                        <div class="wpo-project-text">
+                            <h2><a href="#novascript">NovaScript - AI-Driven Research Management System</a></h2>
+                            <span>MERN Stack / AI Integration</span>
+                        </div>
+                    </div>
+                    <div class="wpo-project-item">
+                        <div class="wpo-project-img">
+                            <img src="assets/images/project/img-2.jpg" alt="">
+                        </div>
+                        <div class="wpo-project-text">
+                            <h2><a href="#globalstock">GlobalStock - Full-Stack E-Commerce Platform</a></h2>
+                            <span>MERN Stack / E-Commerce</span>
+                        </div>
+                    </div>
+                    <div class="wpo-project-item">
+                        <div class="wpo-project-img">
+                            <img src="assets/images/project/img-3.jpg" alt="">
+                        </div>
+                        <div class="wpo-project-text">
+                            <h2><a href="#edumentor">Smart EduMentor - Educational Platform</a></h2>
+                            <span>MERN Stack / EdTech</span>
+                        </div>
+                    </div>
+                    <div class="wpo-project-item">
+                        <div class="wpo-project-img">
+                            <img src="assets/images/project/img-1.jpg" alt="">
+                        </div>
+                        <div class="wpo-project-text">
+                            <h2><a href="#esatahan">E-Satahan - Academic Notes Sharing Platform</a></h2>
+                            <span>PHP / MySQL / Bootstrap</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="shape-p">
+                <svg width="1325" height="1687" viewBox="0 0 1325 1687" fill="none">
+                    <g filter="url(#filter0_f_39_4166)">
+                        <circle cx="481.5" cy="843.5" r="343.5" fill-opacity="0.27" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_f_39_4166" x="-362" y="0" width="1687" height="1687"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_39_4166" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+            <div class="line-shape-1">
+                <img src="assets/images/project/line-1.png" alt="">
+            </div>
+            <div class="line-shape-2">
+                <img src="assets/images/project/line-2.png" alt="">
+            </div>
         </div>
-    </footer>
+        <!-- end of wpo-project-area -->
 
-    <script>
-        // Header scroll effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-            } else {
-                header.classList.remove('header-scrolled');
-            }
-        });
+        <!--Start wpo-testimonial-section-->
+        <section class="wpo-testimonial-section section-padding">
+            <div class="container">
+                <div class="wpo-testimonial-wrap">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-12">
+                            <div class="testimonial-left">
+                                <div class="testimonial-left-inner">
+                                    <div class="slider-for">
+                                        <div class="testimonial-img">
+                                            <img src="assets/images/testimonial/img-1.jpg" alt="">
+                                        </div>
+                                        <div class="testimonial-img">
+                                            <img src="assets/images/testimonial/img-2.jpg" alt="">
+                                        </div>
+                                        <div class="testimonial-img">
+                                            <img src="assets/images/testimonial/img-3.jpg" alt="">
+                                        </div>
+                                        <div class="testimonial-img">
+                                            <img src="assets/images/testimonial/img-4.jpg" alt="">
+                                        </div>
+                                        <div class="testimonial-img">
+                                            <img src="assets/images/testimonial/img-5.jpg" alt="">
+                                        </div>
+                                        <div class="testimonial-img">
+                                            <img src="assets/images/testimonial/img-6.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="side-img-1"><img src="assets/images/testimonial/img-2.jpg" alt=""></div>
+                                    <div class="side-img-2"><img src="assets/images/testimonial/img-3.jpg" alt=""></div>
+                                    <div class="side-img-3"><img src="assets/images/testimonial/img-4.jpg" alt=""></div>
+                                    <div class="side-img-4"><img src="assets/images/testimonial/img-5.jpg" alt=""></div>
+                                    <div class="side-img-5"><img src="assets/images/testimonial/img-6.jpg" alt=""></div>
+                                    <div class="border-s1"></div>
+                                    <div class="border-s2"></div>
+                                    <div class="border-s3"></div>
+                                </div>
+                                <div class="shape-t">
+                                    <svg width="750" height="750" viewBox="0 0 750 750" fill="none">
+                                        <g filter="url(#filter0_f_39_4154)">
+                                            <circle r="125" transform="matrix(-1 0 0 1 375 375)" fill-opacity="0.4" />
+                                        </g>
+                                        <defs>
+                                            <filter id="filter0_f_39_4154" x="0" y="0" width="750" height="750"
+                                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix"
+                                                    result="shape" />
+                                                <feGaussianBlur stdDeviation="125"
+                                                    result="effect1_foregroundBlur_39_4154" />
+                                            </filter>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="wpo-testimonial-items">
+                                <div class="slider-nav">
+                                    <div class="wpo-testimonial-item">
+                                        <div class="wpo-testimonial-text">
+                                            <h4>Many desktop publishing packages and editors now use as their.</h4>
+                                            <p>It is a long established fact that a reader will be distracted by the readable content of page when looking at its layout point of using is that it has more-or-less normal distribution of letters, as opposed
+                                                to using 'Content here, content here', making look like readable English.</p>
+                                            <div class="wpo-testimonial-text-btm">
+                                                <h3>Cathi Falcon, <span>Software Engineer</span></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wpo-testimonial-item">
+                                        <div class="wpo-testimonial-text">
+                                            <h4>Many desktop publishing packages and editors now use as their.</h4>
+                                            <p>It is a long established fact that a reader will be distracted by the readable content of page when looking at its layout point of using is that it has more-or-less normal distribution of letters, as opposed
+                                                to using 'Content here, content here', making look like readable English.</p>
+                                            <div class="wpo-testimonial-text-btm">
+                                                <h3>Robert Johnson, <span>Software Developer</span></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wpo-testimonial-item">
+                                        <div class="wpo-testimonial-text">
+                                            <h4>Many desktop publishing packages and editors now use as their.</h4>
+                                            <p>It is a long established fact that a reader will be distracted by the readable content of page when looking at its layout point of using is that it has more-or-less normal distribution of letters, as opposed
+                                                to using 'Content here, content here', making look like readable English.</p>
+                                            <div class="wpo-testimonial-text-btm">
+                                                <h3>Jenelia Orkid, <span>Web Designer</span></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wpo-testimonial-item">
+                                        <div class="wpo-testimonial-text">
+                                            <h4>Many desktop publishing packages and editors now use as their.</h4>
+                                            <p>It is a long established fact that a reader will be distracted by the readable content of page when looking at its layout point of using is that it has more-or-less normal distribution of letters, as opposed
+                                                to using 'Content here, content here', making look like readable English.</p>
+                                            <div class="wpo-testimonial-text-btm">
+                                                <h3>Cathi Falcon, <span>Software Enginee</span></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wpo-testimonial-item">
+                                        <div class="wpo-testimonial-text">
+                                            <h4>Many desktop publishing packages and editors now use as their.</h4>
+                                            <p>It is a long established fact that a reader will be distracted by the readable content of page when looking at its layout point of using is that it has more-or-less normal distribution of letters, as opposed
+                                                to using 'Content here, content here', making look like readable English.</p>
+                                            <div class="wpo-testimonial-text-btm">
+                                                <h3>Cathi Falcon, <span>Software Enginee</span></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wpo-testimonial-item">
+                                        <div class="wpo-testimonial-text">
+                                            <h4>Many desktop publishing packages and editors now use as their.</h4>
+                                            <p>It is a long established fact that a reader will be distracted by the readable content of page when looking at its layout point of using is that it has more-or-less normal distribution of letters, as opposed
+                                                to using 'Content here, content here', making look like readable English.</p>
+                                            <div class="wpo-testimonial-text-btm">
+                                                <h3>Cathi Falcon, <span>Software Enginee</span></h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-        // Mobile menu toggle
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
+                    </div>
+                </div>
+            </div>
+            <div class="left-shape"></div>
+            <div class="right-shape"><img src="assets/images/testimonial/shape.png" alt=""></div>
+        </section>
+        <!--End wpo-testimonial-section-->
 
-        // Project filtering
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const filter = button.getAttribute('data-filter');
-                
-                projectCards.forEach(card => {
-                    if (filter === 'all') {
-                        card.style.display = 'block';
-                    } else {
-                        const categories = card.getAttribute('data-category');
-                        if (categories && categories.includes(filter)) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    }
-                });
-            });
-        });
+        <!-- start wpo-pricing-section -->
+        <section class="wpo-pricing-section section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="wpo-section-title">
+                                <h2>Pricing Plan</h2>
+                                <p>Must explain to you how all this mistaken idea pleasure born and give you a complete account.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wpo-pricing-wrap">
+                    <div class="row">
+                        <div class="col col-lg-4 col-md-6 col-12">
+                            <div class="wpo-pricing-item">
+                                <div class="wpo-pricing-top">
+                                    <div class="pricing-thumb">
+                                        <span>Basic</span>
+                                    </div>
+                                    <div class="wpo-pricing-text">
+                                        <h2>$120<span> / per month</span></h2>
+                                        <p>Determine the Best Pricing Strategy For Your Business.</p>
+                                    </div>
+                                </div>
+                                <div class="wpo-pricing-bottom">
+                                    <div class="wpo-pricing-bottom-text">
+                                        <ul>
+                                            <li>Softwere Development</li>
+                                            <li>Web Development</li>
+                                            <li>Digital Marketing</li>
+                                            <li>Graphic Design</li>
+                                            <li>24/Support</li>
+                                        </ul>
+                                        <a href="pricing.php">CHOOSE PLAN</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-lg-4 col-md-6 col-12">
+                            <div class="wpo-pricing-item">
+                                <div class="wpo-pricing-top">
+                                    <div class="pricing-thumb">
+                                        <span>Premium</span>
+                                    </div>
+                                    <div class="wpo-pricing-text">
+                                        <h2>$210<span> / per month</span></h2>
+                                        <p>Determine the Best Pricing Strategy For Your Business.</p>
+                                    </div>
+                                </div>
+                                <div class="wpo-pricing-bottom">
+                                    <div class="wpo-pricing-bottom-text">
+                                        <ul>
+                                            <li>Softwere Development</li>
+                                            <li>Web Development</li>
+                                            <li>Digital Marketing</li>
+                                            <li>Graphic Design</li>
+                                            <li>24/Support</li>
+                                        </ul>
+                                        <a href="pricing.php">CHOOSE PLAN</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-lg-4 col-md-6 col-12">
+                            <div class="wpo-pricing-item">
+                                <div class="wpo-pricing-top">
+                                    <div class="pricing-thumb">
+                                        <span>Advanced</span>
+                                    </div>
+                                    <div class="wpo-pricing-text">
+                                        <h2>$373<span> / per month</span></h2>
+                                        <p>Determine the Best Pricing Strategy For Your Business.</p>
+                                    </div>
+                                </div>
+                                <div class="wpo-pricing-bottom">
+                                    <div class="wpo-pricing-bottom-text">
+                                        <ul>
+                                            <li>Softwere Development</li>
+                                            <li>Web Development</li>
+                                            <li>Digital Marketing</li>
+                                            <li>Graphic Design</li>
+                                            <li>24/Support</li>
+                                        </ul>
+                                        <a href="pricing.php">CHOOSE PLAN</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end container -->
+            <div class="shape-p">
+                <svg width="1500" height="1500" viewBox="0 0 1500 1500" fill="none">
+                    <g opacity="0.45" filter="url(#filter0_f_39_4213)">
+                        <circle cx="750" cy="750" r="200" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_f_39_4213" x="0" y="0" width="1500" height="1500"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feGaussianBlur stdDeviation="275" result="effect1_foregroundBlur_39_4212" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+        </section>
+        <!-- end wpo-pricing-section -->
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        <!-- start of wpo-blog-section -->
+        <section class="wpo-blog-section section-padding">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="wpo-section-title">
+                            <h2>Latest News</h2>
+                            <p>Must explain to you how all this mistaken idea pleasure born and give you a complete account.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="wpo-blog-wrap wpo-blog-slide owl-carousel">
+                    <div class="wpo-blog-item">
+                        <div class="wpo-blog-img">
+                            <img src="assets/images/blog/img-1.jpg" alt="">
+                        </div>
+                        <div class="wpo-blog-text">
+                            <ul>
+                                <li>January 02, 2025</li>
+                            </ul>
+                            <h2><a href="blog-single.php">Have evolved over the years sometimes accident.</a></h2>
+                            <a class="details" href="blog-single.php">Post Details</a>
+                        </div>
+                    </div>
+                    <div class="wpo-blog-item">
+                        <div class="wpo-blog-img">
+                            <img src="assets/images/blog/img-2.jpg" alt="">
+                        </div>
+                        <div class="wpo-blog-text">
+                            <ul>
+                                <li>January 03, 2025</li>
+                            </ul>
+                            <h2><a href="blog-single.php"> The Internet tend to repeat predefined chunks.</a></h2>
+                            <a class="details" href="blog-single.php">Post Details</a>
+                        </div>
+                    </div>
+                    <div class="wpo-blog-item">
+                        <div class="wpo-blog-img">
+                            <img src="assets/images/blog/img-3.jpg" alt="">
+                        </div>
+                        <div class="wpo-blog-text">
+                            <ul>
+                                <li>January 05, 2025</li>
+                            </ul>
+                            <h2><a href="blog-single.php">The standard chunk of used since the interested.</a></h2>
+                            <a class="details" href="blog-single.php">Post Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shadow-shape">
+                <svg width="1319" height="1567" viewBox="0 0 1319 1567" fill="none">
+                    <g filter="url(#filter0_f_39_3832)">
+                        <circle cx="803" cy="803" r="303" fill="#59C378" fill-opacity="0.5" />
+                    </g>
+                    <defs>
+                        <filter id="filter0_f_39_3832" x="0" y="0" width="1606" height="1606"
+                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                            <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_39_3832" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+        </section>
+        <!-- end of wpo-blog-section -->
 
-        // Form submission
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form elements
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const subject = document.getElementById('subject').value;
-                const message = document.getElementById('message').value;
-                
-                // Simple validation
-                if (!name || !email || !subject || !message) {
-                    alert('Please fill in all fields');
-                    return;
-                }
-                
-                // Email validation
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    alert('Please enter a valid email address');
-                    return;
-                }
-                
-                // Simulate form submission
-                const submitButton = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitButton.innerHTML;
-                
-                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                submitButton.disabled = true;
-                
-                setTimeout(() => {
-                    alert('Thank you for your message! I will get back to you soon.');
-                    this.reset();
-                    submitButton.innerHTML = originalText;
-                    submitButton.disabled = false;
-                }, 2000);
-            });
-        }
-    </script>
+        <!-- start wpo-site-footer -->
+        <footer class="wpo-site-footer">
+            <div class="upper-contact-area">
+                <div class="container">
+                    <div class="contact-grids">
+                        <div class="row align-items-center">
+                            <div class="col col-lg-6">
+                                <h2>Let's collaborate on your next software project.</h2>
+                            </div>
+                            <div class="col col-lg-6">
+                                <div class="send-message-btn">
+                                    <a class="theme-btn" href="mailto:chandima0406sajith@gmail.com">Contact Me</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left-shape"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="upper-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-lg-4 col-md-6 col-12">
+                            <div class="widget about-widget">
+                                <div class="logo widget-title">
+                                    <a class="site-logo" href="index.html"><img src="assets/images/logo.png"
+                                    alt="">Chandima.</a>
+                                </div>
+                                <p>Software Engineer specializing in MERN stack development and AI solutions. Based in Colombo, Sri Lanka.
+                                </p>
+                                <div class="social-icons">
+                                    <ul>
+                                        <li><a href="mailto:chandima0406sajith@gmail.com"><i class="bi bi-envelope-fill"></i></a></li>
+                                        <li><a href="tel:+94772174920"><i class="bi bi-telephone-fill"></i></a></li>
+                                        <li><a href="https://linkedin.com/in/chandima-wijerathna"><i class="bi bi-linkedin"></i></a></li>
+                                        <li><a href="https://github.com/Chandima0406"><i class="bi bi-github"></i></a></li>
+                                        <li><a href="mailto:chandima0406sajith@gmail.com"><i class="bi bi-globe"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-lg-2 col-md-6 col-12">
+                            <div class="widget link-widget">
+                                <div class="widget-title">
+                                    <h3>Navigation</h3>
+                                </div>
+                                <ul>
+                                    <li><a href="about.php">About us</a></li>
+                                    <li><a href="contact.php">Contact us</a></li>
+                                    <li><a href="#video">Video Guide</a></li>
+                                    <li><a href="blog.php">Recent Post</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-lg-3 col-md-6 col-12">
+                            <div class="widget link-widget service-link-widget">
+                                <div class="widget-title">
+                                    <h3>All Services</h3>
+                                </div>
+                                <ul>
+                                    <li><a href="service-single.php">Web Design</a></li>
+                                    <li><a href="service-single.php">Web Development</a></li>
+                                    <li><a href="service-single.php">Brand Identity</a></li>
+                                    <li><a href="service-single.php">Digital Marketing</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col col-lg-3 col-md-6 col-12">
+                            <div class="widget newsletter-widget">
+                                <div class="widget-title">
+                                    <h3>Newsletter</h3>
+                                </div>
+                                <p>Must explain to you how all this mistaken idea pleasure born and give you a complete account.
+                                </p>
+                                <form>
+                                    <div class="input-1">
+                                        <input type="email" class="form-control" placeholder="Email Address *" required>
+                                    </div>
+                                    <div class="submit clearfix">
+                                        <button type="submit"><i class="ti-email"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end container -->
+                <div class="shadow-shape">
+                    <svg width="1319" height="1567" viewBox="0 0 1319 1567" fill="none">
+                <g filter="url(#filter0_f_39_3833)">
+                    <circle cx="803" cy="803" r="303" fill="#59C378" fill-opacity="0.5" />
+                </g>
+                <defs>
+                    <filter id="filter0_f_39_3833" x="0" y="0" width="1606" height="1606"
+                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                        <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_39_3832" />
+                    </filter>
+                </defs>
+            </svg>
+                </div>
+            </div>
+            <div class="lower-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="separator"></div>
+                        <p class="copyright">Copyright &copy; 2025 Chandima Wijerathna. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end wpo-site-footer -->
+
+    </div>
+    <!-- end of page-wrapper -->
+    <!-- All JavaScript files
+    ================================================== -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <!-- Plugins for this template -->
+    <script src="assets/js/modernizr.custom.js"></script>
+    <script src="assets/js/jquery.dlmenu.js"></script>
+    <script src="assets/js/jquery-plugin-collection.js"></script>
+    <!-- Moving Animation -->
+    <script src="assets/js/moving-animation.js"></script>
+    <!-- Custom script for this template -->
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>
