@@ -1,0 +1,14 @@
+<!-- SVG placeholder for Typing Speed Test -->
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="300" fill="#111827"/>
+  <rect x="50" y="50" width="500" height="200" fill="#1f2937" rx="10"/>
+  <rect x="70" y="80" width="460" height="80" fill="#374151" rx="5"/>
+  <rect x="80" y="90" width="40" height="20" fill="#fbbf24" rx="3"/>
+  <rect x="130" y="90" width="40" height="20" fill="#10b981" rx="3"/>
+  <rect x="180" y="90" width="40" height="20" fill="#ef4444" rx="3"/>
+  <rect x="230" y="90" width="40" height="20" fill="#6366f1" rx="3"/>
+  <text x="300" y="140" text-anchor="middle" fill="#f9fafb" font-family="monospace" font-size="16">The quick brown fox jumps...</text>
+  <rect x="200" y="180" width="200" height="40" fill="#059669" rx="5"/>
+  <text x="300" y="200" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="14" font-weight="bold">85 WPM • 98% Accuracy</text>
+  <text x="300" y="235" text-anchor="middle" fill="#d1d5db" font-family="Arial" font-size="18" font-weight="bold">Typing Speed Test</text>
+</svg>

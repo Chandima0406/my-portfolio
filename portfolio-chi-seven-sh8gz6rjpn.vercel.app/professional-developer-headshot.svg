@@ -1,0 +1,7 @@
+<!-- SVG placeholder for professional headshot -->
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="400" fill="#f3f4f6"/>
+  <circle cx="200" cy="160" r="60" fill="#9ca3af"/>
+  <path d="M140 300 Q200 260 260 300 Q260 340 200 340 Q140 340 140 300" fill="#9ca3af"/>
+  <text x="200" y="360" text-anchor="middle" fill="#6b7280" font-family="Arial" font-size="16">Professional Photo</text>
+</svg>
